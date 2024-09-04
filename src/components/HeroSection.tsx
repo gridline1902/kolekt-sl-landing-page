@@ -9,36 +9,35 @@ import gsap from "gsap";
 const HeroSection = () => {
 
     const containerRef = useRef(null);
-    const h1Ref = useRef(null);
-    const h6Ref = useRef(null);
-    const barRef = useRef(null);
-
+    const h1Ref = useRef<HTMLHeadingElement>(null);
+    const h6Ref = useRef<HTMLHeadingElement>(null);
 
     useGSAP(() => {
-        const timeLine = gsap.timeline({ repeat: 100, repeatDelay: 1 });
-    
-        timeLine
-            .from([h1Ref.current.children, h6Ref.current.children], {
-                xPercent: gsap.utils.wrap([100, -100]),
-                stagger: 0.4,
-                opacity: 0,
-                ease: "circ.inOut",
-                duration: 1,
-            })
-            .to([h1Ref.current.children, h6Ref.current.children], {
-                opacity: 1,
-                duration: 2, 
-                // onComplete: () => {
-                //     timeLine.pause(); // Optionally pause the timeline after this step
-                // }
-            })
-            .to([h1Ref.current.children, h6Ref.current.children], {
-                opacity: 0,
-                yPercent: gsap.utils.wrap([-100, 100]),
-                duration: 1,
-                ease: "none",
-            }, ">1.5");
-    
+        const timeLine = gsap.timeline();
+        if (h1Ref.current && h6Ref.current) {
+            timeLine
+                .from([h1Ref.current.children, h6Ref.current.children], {
+                    xPercent: gsap.utils.wrap([100, -100]),
+                    stagger: 0.4,
+                    opacity: 0,
+                    ease: "circ.inOut",
+                    duration: 1,
+                })
+                .to([h1Ref.current.children, h6Ref.current.children], {
+                    opacity: 1,
+                    duration: 2,
+                    onComplete: () => {
+                        timeLine.kill();
+                    }
+                })
+                .to([h1Ref.current.children, h6Ref.current.children], {
+                    opacity: 0,
+                    yPercent: gsap.utils.wrap([-100, 100]),
+                    duration: 1,
+                    ease: "none",
+                }, ">1.5");
+        }
+
     }, { scope: containerRef });
 
 
@@ -48,18 +47,18 @@ const HeroSection = () => {
                 <div className="flex flex-col gap-10 lg:absolute left-52 top-[10rem]">
                     <div className="flex flex-col gap-8">
                         <h1 ref={h1Ref} className="text-slate-50 text-5xl tracking-wide font-extrabold max-w-sm text-left overflow-hidden">
-                            <div className="mask">
+                            <div>
                                 <div>Get paid,</div>
                             </div>
-                            <div className="mask">
+                            <div>
                                 <div>quickly</div>
                             </div>
                         </h1>
                         <h6 ref={h6Ref} className="text-slate-50 text-2xl text-left max-w-lg overflow-hidden">
-                            <div className="mask">
+                            <div>
                                 <div>Receive, confirm, and instantly settle payments directly to your mobile wallet -</div>
                             </div>
-                            <div className="mask">
+                            <div>
                                 <div><span className="font-bold">completely free of charge.</span></div>
                             </div>
                         </h6>
