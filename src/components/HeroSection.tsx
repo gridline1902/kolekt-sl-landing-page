@@ -42,11 +42,11 @@ const HeroSection = () => {
 
 
     return (
-        <section ref={containerRef} className="min-h-screen bg-[#072048] pt-24 overflow-hidden relative">
-            <div className="flex flex-col lg:grid grid-cols-2 relative z-10">
-                <div className="flex flex-col gap-10 lg:absolute left-52 top-[10rem]">
+        <section ref={containerRef} className="min-h-screen bg-[#072048] overflow-hidden relative">
+            <div className="flex flex-col lg:grid grid-cols-2 relative z-10 min-h-screen lg:items-center lg:justify-center">
+                <div className="flex flex-col gap-10 lg:items-end lg:justify-center">
                     <div className="flex flex-col gap-8">
-                        <h1 ref={h1Ref} className="text-slate-50 text-5xl tracking-wide font-extrabold max-w-sm text-left overflow-hidden">
+                        <h1 ref={h1Ref} className="text-slate-50 text-6xl tracking-wide font-extrabold max-w-sm text-left overflow-hidden">
                             <div>
                                 <div>Get paid,</div>
                             </div>
@@ -62,14 +62,12 @@ const HeroSection = () => {
                                 <div><span className="font-bold">completely free of charge.</span></div>
                             </div>
                         </h6>
-                    </div>
-                    <div className="w-full flex">
-                        <Button className="w-1/2 h-12">Create a free account</Button>
+                        <Button className="h-11 w-[40%]">Create a free account</Button>
                     </div>
                 </div>
                 <Image
                     src="/Kolekt-Home-v2-2.png"
-                    className="lg:absolute top-[2rem] right-40 scale-75"
+                    className="lg:absolute right-40 scale-75"
                     alt="kolekt-payments"
                     width={500}
                     height={400}
