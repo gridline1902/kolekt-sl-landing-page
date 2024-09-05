@@ -6,6 +6,8 @@ import { useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Box from "@mui/material/Box";
+import Image from "next/image";
+import { FaGlobeAfrica, FaRocket, FaWhatsapp } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,25 +15,18 @@ const KolektSolutionsSection = () => {
     const containerRef = useRef(null);
 
     useGSAP(() => {
-        // Define the timeline and animations
         const tl = gsap.timeline({
             defaults: {
                 ease: "power1",
                 duration: 1
             }
         });
-
-        // Set initial state for the photos
-        gsap.set(".photo:not(:first-child)", { opacity: 0, scale: 0.5 });
-
-        // Create animations for the photos
+        // gsap.set(".photo:not(:first-child)", { opacity: 0, scale: 0.5 });
         tl.to(".photo:not(:first-child)", {
             opacity: 1,
             scale: 1,
             stagger: 1
         });
-
-        // Set up ScrollTrigger
         ScrollTrigger.create({
             trigger: ".gallery",
             start: "top top",
@@ -56,19 +51,25 @@ const KolektSolutionsSection = () => {
                         justifyContent: "center",
                         width: "40vw",
                         marginLeft: "auto",
-                        color: "#000",
-                        fontSize: "3rem",
-                        fontWeight: 900,
                     }
                 }}>
                     <Box className="details">
-                        BRAND PRODUCT
+                        <div className="flex flex-col gap-4">
+                            <h1 className="text-2xl font-semibold"><span className="flex items-center gap-4">EXPAND YOUR BUSINESS<FaGlobeAfrica className="text-blue-600" /></span></h1>
+                            <h6 className="max-w-sm text-slate-500 font-medium">Integrate once and let your customers pay you however they want.</h6>
+                        </div>
                     </Box>
                     <Box className="details">
-                        PRODUCT DETAILS
+                        <div className="flex flex-col gap-4">
+                            <h1 className="text-2xl font-semibold"><span className="flex items-center gap-4">Whatsapp notification<FaWhatsapp className="text-blue-600" /></span></h1>
+                            <h6 className="max-w-sm text-slate-500 font-medium">Staff can quickly confirm the success of payments via WhatsApp alerts.</h6>
+                        </div>
                     </Box>
                     <Box className="details">
-                        DESIGN AGENCY
+                        <div className="flex flex-col gap-4">
+                            <h1 className="text-2xl font-semibold"><span className="flex items-center gap-4">Instant Settlement <FaRocket className="text-blue-600" /></span></h1>
+                            <h6 className="max-w-sm text-slate-500 font-medium">It takes seconds to settle your payments at no additional cost.</h6>
+                        </div>
                     </Box>
                 </Box>
                 <Box className="rightblock" sx={{
@@ -80,7 +81,7 @@ const KolektSolutionsSection = () => {
                 }}>
                     <Box sx={{
                         width: "40vw",
-                        height: "40vw",
+                        height: "30vw",
                         position: "relative",
                         "& .photo": {
                             position: "absolute",
@@ -93,24 +94,27 @@ const KolektSolutionsSection = () => {
                         }
                     }}>
                         <Box className="photo">
-                            <img
-                                src="http://static.showit.co/800/M0IzUCMvQCqlJn1YtNlikw/59514/pexels-yan-5793641-1.jpg"
-                                alt="img-1" />
+                            <Image
+                                src="/landing_board.jpg"
+                                fill
+                                alt="expand" />
                         </Box>
                         <Box className="photo">
-                            <img
-                                src="http://static.showit.co/800/137NFxuzSxeyjlons2WEzA/59514/pexels-yan-5793643.jpg"
+                            <Image
+                                src="/landing_board.jpg"
+                                fill
                                 alt="img-2" />
                         </Box>
                         <Box className="photo">
-                            <img
-                                src="http://static.showit.co/800/3kOLYaOCS1SMieN6Y88Fqg/59514/mukuko-studio-mu88mlefcou-unsplash.jpg"
-                                alt="img-3" />
+                            <Image
+                                src="/landing_board.jpg"
+                                fill
+                                alt="img-2" />
                         </Box>
                     </Box>
                 </Box>
             </Box>
-        </section>
+        </section >
     );
 }
 
