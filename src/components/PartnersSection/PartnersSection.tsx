@@ -18,40 +18,35 @@ const PartnersSection = () => {
     const containerRef = useRef(null);
     const svgRef = useRef<SVGSVGElement>(null);
 
+
     function animateRect(rect: gsap.TweenTarget) {
         let tl = gsap.timeline({
-            repeat: 60, defaults: {
-                ease: "power1",
-                duration: 2
-            }
-        })
-        tl.set(rect, { drawSVG: "0 400" })
-            .to(rect, { drawSVG: "400 600" })
-            .to(rect, { drawSVG: "600 1000" })
-            .to(rect, { drawSVG: "1000 1200" })
-            .to(rect, { drawSVG: "1200 1600" })
-        return tl
+            repeat: -1,
+            defaults: { ease: "power1.inOut", duration: 1.5 }
+        });
+        tl.to(rect, { stroke: "#FF8C00" })
+            .to(rect, { stroke: "#FF0000" })
+            .to(rect, { stroke: "#0000FF" });
+
+        return tl;
     }
 
     useGSAP(() => {
         const tl = gsap.timeline();
-        tl.add(animateRect("#rect1"))
-        tl.play(4)
+        tl.add(animateRect("#rect1"));
+        tl.play();
 
-        gsap.set("rect", { fill: "none" })
+        gsap.set("rect", { fill: "none" });
 
-    }, { scope: containerRef })
-
-
-
+    }, { scope: containerRef });
 
     return (
         <section ref={containerRef} className="bg-white">
-            <div className="pt-12">
+            <div className="flex flex-col gap-10 pt-12 sm: items-center lg:gap-12">
                 <h6 className="text-sm text-center font-medium">Trusted by these partners:</h6>
-                <div className="flex flex-wrap justify-center gap-24 p-4"> {/* Increased gap between images */}
+                <div className="flex flex-col justify-center gap-4 lg:flex-row lg:gap-24 ">
                     {imagePaths.map((path, index) => (
-                        <div key={path} className="relative w-[120px] h-[72px] p-2"> {/* Padding around image */}
+                        <div key={path} className="relative w-[120px] h-[72px]"> 
                             <svg
                                 ref={svgRef}
                                 viewBox="0 0 120 72"
@@ -84,8 +79,8 @@ const PartnersSection = () => {
                         </div>
                     ))}
                 </div>
+                <hr className="mx-auto w-3/4" />
             </div>
-            <hr className="w-full" />
         </section>
     );
 }
