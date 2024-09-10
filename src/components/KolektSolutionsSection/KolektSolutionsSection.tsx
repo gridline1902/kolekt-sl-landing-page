@@ -21,7 +21,6 @@ const KolektSolutionsSection = () => {
                 duration: 1
             }
         });
-        // gsap.set(".photo:not(:first-child)", { opacity: 0, scale: 0.5 });
         tl.to(".photo:not(:first-child)", {
             opacity: 1,
             scale: 1,
