@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Kolekt by Monime",
   description: "A simple way to accept payments at scale, with ZERO costs. Delight customers by allowing frontline staff to confirm payments via WhatsApp, instantly.",
+  // icons: 
 };
 
 export default function RootLayout({
