@@ -6,8 +6,8 @@ const Footer = () => {
     return (
         <section className="min-h-screen bg-[#0181ff] flex flex-col">
             <div className="flex flex-col gap-4 py-24 lg: items-center">
-                <h1 className="text-4xl text-white font-semibold">Begin Kolekt Tidae</h1>
-                <h6 className="text-md text-white font-medium">Keep customers coming back with magical in-person payment experiences</h6>
+                <h1 className="text-xl lg:text-4xl text-white font-semibold">Begin Kolekt Tidae</h1>
+                <h6 className="text-sm text-center text-white font-medium leading-6">Keep customers coming back with magical in-person payment experiences</h6>
                 <button className="bg-white leading-[2.2rem] px-4 rounded-md text-sm font-medium group flex items-center transition-all duration-300 ease-in-out">
                     <span className="flex items-center">
                         Contact Sales
