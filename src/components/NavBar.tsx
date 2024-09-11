@@ -1,13 +1,18 @@
 "use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "./Button";
 import { GiHeadphones } from "react-icons/gi";
+import { MdClose, MdMenu } from "react-icons/md";
+import { useState } from "react";
 
 const NavBar = () => {
-    const [isOpen, setIsOpen] = useState(false)
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
 
     return (
         <nav className="z-20 top-0 start-0 w-full h-20 bg-white flex items-center justify-center lg:sticky lg:h-16">
@@ -40,52 +45,35 @@ const NavBar = () => {
                     height={100}
                     className="w-auto h-auto"
                 />
+            </div>
+            <div className="fixed bottom-6 right-6 z-50 lg:hidden">
+                <Button
+                    onClick={toggleMenu}
+                    className="p-4 rounded-full shadow-lg"
+                >
+                    {isOpen ? <MdClose className="text-2xl" /> : <MdMenu className="text-2xl" />}
+                </Button>
+                {/* Mobile Menu Popover */}
+                {isOpen && (
+                    <div className="absolute bottom-full right-0 mb-6 rounded-lg">
+                        <div className="flex flex-col gap-2">
+                            <Link href="/" onClick={toggleMenu} className="absolute bg-blue-600 rounded-full right-0 bottom-14 py-2 px-4 text-white flex items-center gap-2">
+                                <GiHeadphones className="text-white" />
+                                <span>Contact</span>
+                            </Link>
+                            <Link href="/" onClick={toggleMenu} className="flex items-center gap-2 w-full bg-slate-900 text-white py-2 px-4 rounded-full">
+                                <span className="text-nowrap">Create a free account</span>
+                            </Link>
+                        </div>
+                    </div>
+                )}
 
-                {/* <div className="ml-4">
-                    <button onClick={handleMenuToggle} className="focus:outline-none text-blue-600">
-                        {isMenuOpen ? (
-                            <svg
-                                className="w-7 h-7"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                ></path>
-                            </svg>
-                        ) : (
-                            <svg
-                                className="w-7 h-7"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M4 6h16M4 12h16m-7 6h7"
-                                ></path>
-                            </svg>
-                        )}
-                    </button>
-                </div> */}
             </div>
 
-            
 
-            {/* Mobile Menu */}
-            {/* {isMenuOpen && (
-                <div className="absolute right-24 text-red-600">
-                    dssdds
-                </div>
-            )} */}
+
+
+
         </nav>
     );
 }
