@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
@@ -38,41 +37,68 @@ const KolektSolutionsSection = () => {
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className="min-h-screen bg-white">
-            <Box className="gallery" sx={{ display: "flex" }}>
+        <section ref={containerRef} className="min-h-fit lg:min-h-screen bg-white">
+            <Box className="gallery" sx={{ display: "flex", flexDirection: { xs: 'column', lg: 'row' } }}>
                 <Box className="left" sx={{
-                    width: "50%",
-                    marginLeft: "auto",
+                    width: { xs: "100%", lg: "50%" },
+                    marginLeft: { lg: "auto" },
+                    padding: { xs: "1.5rem", lg: "0" },
                     "& .details": {
-                        height: "100vh",
+                        height: { xs: "fit-content", lg: "100vh" },
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "center",
-                        width: "40vw",
-                        marginLeft: "auto",
+                        width: { xs: "100%", lg: "40vw" },
+                        marginLeft: { lg: "auto" },
                     }
                 }}>
-                    <Box className="details">
-                        <div className="flex flex-col gap-4">
-                            <h1 className="text-2xl font-semibold"><span className="flex items-center gap-4">EXPAND YOUR BUSINESS<FaGlobeAfrica className="text-blue-600" /></span></h1>
-                            <h6 className="max-w-sm text-slate-500 font-medium">Integrate once and let your customers pay you however they want.</h6>
-                        </div>
-                    </Box>
-                    <Box className="details">
-                        <div className="flex flex-col gap-4">
-                            <h1 className="text-2xl font-semibold"><span className="flex items-center gap-4">Whatsapp notification<FaWhatsapp className="text-blue-600" /></span></h1>
-                            <h6 className="max-w-sm text-slate-500 font-medium">Staff can quickly confirm the success of payments via WhatsApp alerts.</h6>
-                        </div>
-                    </Box>
-                    <Box className="details">
-                        <div className="flex flex-col gap-4">
-                            <h1 className="text-2xl font-semibold"><span className="flex items-center gap-4">Instant Settlement <FaRocket className="text-blue-600" /></span></h1>
-                            <h6 className="max-w-sm text-slate-500 font-medium">It takes seconds to settle your payments at no additional cost.</h6>
-                        </div>
-                    </Box>
+                    <div className="py-14 sm:px-4">
+                        <h1 className="text-xl font-bold lg:hidden mb-8">
+                            What you can do with Kolekt
+                        </h1>
+                        <Box className="details">
+                            <div className="flex flex-col gap-6">
+                                <FaGlobeAfrica className="text-blue-600 text-3xl sm:text-4xl" />
+                                <div>
+                                    <h1 className="text-xl sm:text-2xl font-semibold">
+                                        EXPAND YOUR BUSINESS
+                                    </h1>
+                                    <h6 className="max-w-sm text-slate-500 font-medium">
+                                        Integrate once and let your customers pay you however they want.
+                                    </h6>
+                                </div>
+                            </div>
+                        </Box>
+                        <Box className="details mt-8">
+                            <div className="flex flex-col gap-6">
+                                <FaWhatsapp className="text-blue-600 text-3xl sm:text-4xl" />
+                                <div>
+                                    <h1 className="text-xl sm:text-2xl font-semibold">
+                                        WhatsApp Notification
+                                    </h1>
+                                    <h6 className="max-w-sm text-slate-500 font-medium">
+                                        Staff can quickly confirm the success of payments via WhatsApp alerts.
+                                    </h6>
+                                </div>
+                            </div>
+                        </Box>
+                        <Box className="details mt-8">
+                            <div className="flex flex-col gap-6">
+                                <FaRocket className="text-blue-600 text-3xl sm:text-4xl" />
+                                <div>
+                                    <h1 className="text-xl sm:text-2xl font-semibold">
+                                        Instant Settlement
+                                    </h1>
+                                    <h6 className="max-w-sm text-slate-500 font-medium">
+                                        It takes seconds to settle your payments at no additional cost.
+                                    </h6>
+                                </div>
+                            </div>
+                        </Box>
+                    </div>
                 </Box>
-                <Box className="rightblock" sx={{
-                    width: "50%",
+                <Box className="rightblock hidden lg:flex" sx={{
+                    width: { xs: "100%", lg: "50%" },
                     height: "100vh",
                     display: "flex",
                     flexDirection: "column",
@@ -96,25 +122,28 @@ const KolektSolutionsSection = () => {
                             <Image
                                 src="/landing_board.jpg"
                                 fill
-                                alt="expand" />
+                                alt="expand"
+                            />
                         </Box>
                         <Box className="photo">
                             <Image
                                 src="/landing_board.jpg"
                                 fill
-                                alt="img-2" />
+                                alt="img-2"
+                            />
                         </Box>
                         <Box className="photo">
                             <Image
                                 src="/landing_board.jpg"
                                 fill
-                                alt="img-2" />
+                                alt="img-3"
+                            />
                         </Box>
                     </Box>
                 </Box>
             </Box>
-        </section >
+        </section>
     );
-}
+};
 
 export default KolektSolutionsSection;
