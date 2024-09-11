@@ -29,7 +29,7 @@ const NavBar = () => {
                     className="w-auto h-auto"
                 />
                 <div className="flex items-center gap-x-6">
-                    <Link href={'/'}>
+                    <Link href="/contact">
                         <span className="flex items-center gap-1">
                             <GiHeadphones className="text-base text-gray-400" />
                             <h6 className="text-sm">Contact</h6>
