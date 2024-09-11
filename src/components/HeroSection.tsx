@@ -54,8 +54,8 @@ const HeroSection = () => {
                                 <div>quickly</div>
                             </div>
                         </h1>
-                        <h6 ref={h6Ref} className="text-slate-50 text-lg max-w-lg overflow-hidden text-wrap lg:text-2xl">
-                            <div>
+                        <h6 ref={h6Ref} className="text-slate-50 max-w-lg overflow-hidden text-wrap lg:text-2xl">
+                            <div className="px-2"> 
                                 <div>Receive, confirm, and instantly settle payments directly to your mobile wallet -</div>
                             </div>
                             <div>
