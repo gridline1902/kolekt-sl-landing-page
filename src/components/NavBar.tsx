@@ -5,8 +5,11 @@ import Button from "./Button";
 import { GiHeadphones } from "react-icons/gi";
 import { MdClose, MdMenu } from "react-icons/md";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const NavBar = () => {
+
+    const router = useRouter()
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -32,7 +35,7 @@ const NavBar = () => {
                             <h6 className="text-sm">Contact</h6>
                         </span>
                     </Link>
-                    <Button className="h-8 px-4">Create a free account</Button>
+                    <Button onClick={() => router.push('https://kolekt.monime.app')} className="h-8 px-4">Create a free account</Button>
                 </div>
             </div>
 
@@ -57,13 +60,16 @@ const NavBar = () => {
                 {isOpen && (
                     <div className="absolute bottom-full right-0 mb-6 rounded-lg">
                         <div className="flex flex-col gap-2">
-                            <Link href="/" onClick={toggleMenu} className="absolute bg-blue-600 rounded-full right-0 bottom-14 py-2 px-4 text-white flex items-center gap-2">
+                            <Link href="/contact" onClick={toggleMenu} className="absolute bg-blue-600 rounded-full right-0 bottom-14 py-2 px-4 text-white flex items-center gap-2">
                                 <GiHeadphones className="text-white" />
                                 <span>Contact</span>
                             </Link>
-                            <Link href="/" onClick={toggleMenu} className="flex items-center gap-2 w-full bg-slate-900 text-white py-2 px-4 rounded-full">
+                            <Button onClick={() => {
+                                router.push('https://kolekt.monime.app')
+                                toggleMenu()
+                            }} className="flex items-center gap-2 w-full bg-slate-900 text-white py-2 px-4 rounded-full hover:bg-muted">
                                 <span className="text-nowrap">Create a free account</span>
-                            </Link>
+                            </Button>
                         </div>
                     </div>
                 )}
