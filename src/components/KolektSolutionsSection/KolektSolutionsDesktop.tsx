@@ -95,7 +95,7 @@ function FeaturesDesktop({ features }: Readonly<{ features: Features[] }>) {
                                 <TabPanel
                                     static
                                     key={feature.name + changeCount}
-                                    className="col-start-1 row-start-1 flex ui-not-focus-visible:outline-none" // Removed focus outline
+                                    className="col-start-1 row-start-1 flex ui-not-focus-visible:outline-none"
                                 >
                                     <Image
                                         ref={imageRef}

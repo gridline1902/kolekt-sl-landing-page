@@ -2,13 +2,17 @@ import { useState, useRef, useEffect } from "react"
 import { PhoneFrame } from "../PhoneFrame"
 import clsx from "clsx"
 import { IconType } from "react-icons"
+import Image, { StaticImageData } from "next/image";
+import type { RefObject } from "react";
 
 
 type Features = {
-    name: string,
-    description: string,
-    icon: IconType
-}
+    name: string;
+    description: string;
+    icon: IconType;
+    screen: StaticImageData;
+};
+
 
 
 
@@ -55,7 +59,7 @@ function FeaturesMobile({ features }: Readonly<{ features: Features[] }>) {
                     <div
                         key={featureIndex}
                         ref={(ref) => ref && (slideRefs.current[featureIndex] = ref)}
-                        className="w-full flex-none snap-center px-4 sm:px-6"
+                        className="w-full flex-none snap-center px-4 sm:px-6 text-white"
                     >
                         <div className="relative transform overflow-hidden rounded-2xl  px-5 py-6">
                             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -65,9 +69,14 @@ function FeaturesMobile({ features }: Readonly<{ features: Features[] }>) {
                                 /> */}
                             </div>
                             <PhoneFrame className="relative mx-auto w-full max-w-[366px]">
-                                {/* <feature.screen /> */}
+                                <Image
+                                    src={feature.screen}
+                                    fill
+                                    className="photo-screen object-cover"
+                                    alt={feature.name}
+                                />
                             </PhoneFrame>
-                            <div className="absolute inset-x-0 bottom-0  p-6 backdrop-blur sm:p-10">
+                            <div className="absolute inset-x-0 bottom-0 bg-gray-800/95 p-6 backdrop-blur sm:p-10">
                                 <feature.icon className="h-8 w-8" />
                                 <h3 className="mt-6 text-sm font-semibold text-white sm:text-lg">
                                     {feature.name}

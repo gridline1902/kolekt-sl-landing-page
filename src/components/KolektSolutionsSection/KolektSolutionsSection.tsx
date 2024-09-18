@@ -32,8 +32,8 @@ const KolektSolutionsSection = () => {
     ]
     return (
         <section className="min-h-screen bg-white py-12">
-            <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
-                <h2 className="text-3xl font-medium tracking-tight text-center text-black">
+            <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-full">
+                <h2 className="text-xl font-medium tracking-tight text-center text-black lg:text-3xl">
                     What you can do with Kolekt
                 </h2>
             </div>
