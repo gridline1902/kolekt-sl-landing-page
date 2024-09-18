@@ -48,7 +48,7 @@ function FeaturesDesktop({ features }: Readonly<{ features: Features[] }>) {
                 {features.map((feature, featureIndex) => (
                     <div
                         key={feature.name}
-                        className={`relative rounded-2xl transition-colors ${featureIndex === selectedIndex ? "bg-[#0181ff] text-white" : "bg-gray-300 text-slate-900"
+                        className={`relative rounded-2xl transition-colors ${featureIndex === selectedIndex ? "bg-[#0181ff] text-white shadow-xl shadow-blue-400" : "bg-gray-300 text-slate-900 shadow-xl"
                             }`} // Conditional background and text color
                     >
                         {featureIndex === selectedIndex && <div className="absolute inset-0" />}
@@ -66,7 +66,7 @@ function FeaturesDesktop({ features }: Readonly<{ features: Features[] }>) {
                 ))}
             </TabList>
             <div className="relative col-span-6">
-               
+
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                     {/* <CircleBackground color="#13B5C8" className="animate-spin-slower" /> */}
                 </div>
