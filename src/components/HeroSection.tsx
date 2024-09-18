@@ -5,6 +5,11 @@ import Button from "@/components/Button";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = () => {
     const containerRef = useRef(null);
@@ -34,15 +39,22 @@ const HeroSection = () => {
                     opacity: 1,
                     duration: 2,
                     onComplete: () => {
-                        timeLine.kill();
+                        timeLine.pause();
                     }
                 })
         }
 
+        // ScrollTrigger.create({
+        //     trigger: ".hero",
+        //     start: "top center",
+        //     end: "bottom center",
+        //     onEnter: () => timeLine.restart(),
+        //     onLeaveBack: () => timeLine.restart(),
+        // });
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className="h-auto bg-[#072048] overflow-hidden relative">
+        <section ref={containerRef} className="h-fit bg-[#072048] overflow-hidden relative md:min-h-screen">
             <div className="flex flex-col pt-12 lg:grid lg:grid-cols-2 relative z-10 min-h-screen lg:items-center lg:justify-center">
                 <div className="flex flex-col gap-10 items-center justify-center lg:items-end lg:justify-center text-center lg:text-left">
                     <div className="flex flex-col gap-8">
@@ -55,7 +67,7 @@ const HeroSection = () => {
                             </div>
                         </h1>
                         <h6 ref={h6Ref} className="text-slate-50 max-w-lg overflow-hidden text-wrap lg:text-2xl">
-                            <div className="px-2"> 
+                            <div>
                                 <div>Receive, confirm, and instantly settle payments directly to your mobile wallet -</div>
                             </div>
                             <div>
@@ -67,8 +79,9 @@ const HeroSection = () => {
                         </div>
                     </div>
                 </div>
-                <div ref={imageRef} className="relative scale-75 lg:absolute lg:right-40 lg:scale-75 lg:h-full">
+                <div ref={imageRef} className="relative scale-75 h-full lg:absolute lg:right-40 lg:scale-75 md:items-center">
                     <Image
+                        className="md:mt-[59px]"
                         src="/Kolekt-Home-v2-2.png"
                         alt="kolekt-payments"
                         width={500}

@@ -4,18 +4,54 @@ import Link from "next/link";
 import Button from "./Button";
 import { GiHeadphones } from "react-icons/gi";
 import { MdClose, MdMenu } from "react-icons/md";
-import { useState } from "react";
+import { LegacyRef, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { IconType } from "react-icons";
 
 const NavBar = () => {
+    const [isOpen, setIsOpen] = useState(false);
 
     const router = useRouter()
 
-    const [isOpen, setIsOpen] = useState(false);
+    const menuRefContainer = useRef(null)
+    const menuButtonRef = useRef<HTMLButtonElement>(null)
+    const menuIconRef = useRef<HTMLSpanElement>(null)
 
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+    const { contextSafe } = useGSAP({ scope: menuRefContainer });
+
+    const toggleMenu = contextSafe(() => {
+        const timeline = gsap.timeline()
+        if (!isOpen) {
+            timeline
+                .to(menuButtonRef.current, {
+                    rotation: 180,
+                    duration: 0.3,
+                    ease: "power2.out"
+                })
+                .to(menuIconRef.current, {
+                    rotate: 360,
+                    scale: 1.2,
+                    duration: 0.3,
+                    ease: "back.out(1.7)"
+                }, "<")
+        } else {
+            timeline.to(menuButtonRef.current, {
+                rotation: 0,
+                duration: 0.3,
+                ease: "power2.in"
+            })
+                .to(menuIconRef.current, {
+                    rotate: 0,
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "back.in(1.7)"
+                }, "<")
+        }
+        setIsOpen(!isOpen)
+    })
+
 
     return (
         <nav className="z-20 top-0 start-0 w-full h-20 bg-white flex items-center justify-center lg:sticky lg:h-16">
@@ -49,12 +85,15 @@ const NavBar = () => {
                     className="w-auto h-auto"
                 />
             </div>
-            <div className="fixed bottom-6 right-6 z-50 lg:hidden">
+            <div className="fixed bottom-6 right-6 z-50 lg:hidden" ref={menuRefContainer}>
                 <Button
                     onClick={toggleMenu}
-                    className="p-4 rounded-full shadow-lg"
+                    className="menu-button p-4 rounded-full shadow-lg"
+                    ref={menuButtonRef}
                 >
-                    {isOpen ? <MdClose className="text-2xl" /> : <MdMenu className="text-2xl" />}
+                    <span ref={menuIconRef}>
+                        {isOpen ? <MdClose className="text-2xl" /> : <MdMenu className="text-2xl" />}
+                    </span>
                 </Button>
                 {/* Mobile Menu Popover */}
                 {isOpen && (
@@ -73,13 +112,7 @@ const NavBar = () => {
                         </div>
                     </div>
                 )}
-
             </div>
-
-
-
-
-
         </nav>
     );
 }

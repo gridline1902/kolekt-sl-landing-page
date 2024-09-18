@@ -1,12 +1,14 @@
 'use client'
 
+import { MutableRefObject, RefObject } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    className?: string
+    className?: string,
+    ref?: RefObject<HTMLButtonElement>
 }
 
-const Button = ({ className, children, ...props }: ButtonProps) => {
+const Button = ({ className, children, ref, ...props }: ButtonProps) => {
     return (
         <button
             className={twMerge(
@@ -14,6 +16,7 @@ const Button = ({ className, children, ...props }: ButtonProps) => {
                 className
             )}
             {...props}
+            ref={ref}
         >
             {children}
         </button>
