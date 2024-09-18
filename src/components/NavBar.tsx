@@ -4,11 +4,11 @@ import Link from "next/link";
 import Button from "./Button";
 import { GiHeadphones } from "react-icons/gi";
 import { MdClose, MdMenu } from "react-icons/md";
-import { LegacyRef, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { IconType } from "react-icons";
+import KolektLogo from "@/images/Kolekt-v3.0.png"
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -78,7 +78,7 @@ const NavBar = () => {
             {/* Mobile View */}
             <div className="flex items-center justify-between w-full px-10 lg:hidden ">
                 <Image
-                    src={'/Kolekt-v3.0.png'}
+                    src={KolektLogo}
                     alt="kolekt-logo"
                     width={100}
                     height={100}

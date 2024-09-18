@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import KolektAppScreen from "@/images/Kolekt-Home-v2-2.png"
 
 
 gsap.registerPlugin(useGSAP);
@@ -82,7 +83,7 @@ const HeroSection = () => {
                 <div ref={imageRef} className="relative scale-75 h-full lg:absolute lg:right-40 lg:scale-75 md:items-center">
                     <Image
                         className="md:mt-[59px]"
-                        src="/Kolekt-Home-v2-2.png"
+                        src={KolektAppScreen}
                         alt="kolekt-payments"
                         width={500}
                         height={400}

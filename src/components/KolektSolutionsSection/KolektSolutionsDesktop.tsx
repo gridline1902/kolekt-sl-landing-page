@@ -4,6 +4,8 @@ import { useDebouncedCallback } from "use-debounce";
 import { PhoneFrame } from "../PhoneFrame";
 import { IconType } from "react-icons";
 import Image, { StaticImageData } from "next/image";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 type Features = {
     name: string;
@@ -25,9 +27,6 @@ function usePrevious<T>(value: T) {
 function FeaturesDesktop({ features }: Readonly<{ features: Features[] }>) {
     let [changeCount, setChangeCount] = useState(0);
     let [selectedIndex, setSelectedIndex] = useState(0);
-    let prevIndex = usePrevious(selectedIndex);
-    let isForwards = prevIndex === undefined ? true : selectedIndex > prevIndex;
-
     let onChange = useDebouncedCallback(
         (selectedIndex) => {
             setSelectedIndex(selectedIndex);
@@ -36,6 +35,25 @@ function FeaturesDesktop({ features }: Readonly<{ features: Features[] }>) {
         100,
         { leading: true }
     );
+    const containerRef = useRef(null);
+    const imageRef = useRef<HTMLImageElement>(null);
+
+    useGSAP(() => {
+        if (imageRef.current) {
+            gsap.fromTo(
+                imageRef.current,
+                { x: '100%', opacity: 0 }, // Start position: off-screen to the left
+                { x: '0%', opacity: 1, duration: 0.5, ease: 'power2.out' }
+            )
+        }
+    },
+        {
+            dependencies: [selectedIndex],
+            scope: containerRef,
+            revertOnUpdate: true
+        }
+    )
+
 
     return (
         <TabGroup
@@ -65,7 +83,7 @@ function FeaturesDesktop({ features }: Readonly<{ features: Features[] }>) {
                     </div>
                 ))}
             </TabList>
-            <div className="relative col-span-6">
+            <div ref={containerRef} className="relative col-span-6">
 
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                     {/* <CircleBackground color="#13B5C8" className="animate-spin-slower" /> */}
@@ -80,10 +98,10 @@ function FeaturesDesktop({ features }: Readonly<{ features: Features[] }>) {
                                     className="col-start-1 row-start-1 flex ui-not-focus-visible:outline-none" // Removed focus outline
                                 >
                                     <Image
+                                        ref={imageRef}
                                         src={feature.screen}
-                                        width={500}
-                                        height={500}
-                                        objectFit="contain"
+                                        fill
+                                        className="photo-screen object-cover"
                                         alt={feature.name}
                                     />
                                 </TabPanel>

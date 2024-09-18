@@ -1,4 +1,5 @@
 import Image from "next/image";
+import KolektWhiteLogo from "@/images/Kolekt-white-v3.0.png";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 
@@ -23,7 +24,7 @@ const Footer = () => {
                         <hr className="w-full border-t border-white" />
                     </div>
                     <div className="flex justify-between items-center w-full mt-12 mb-12">
-                        <Image src={'/Kolekt-white-v3.0.png'} alt="kolekt-logo" width={150} height={150} />
+                        <Image src={KolektWhiteLogo} alt="kolekt-logo" width={150} height={150} />
                         <span className="flex gap-1 text-white text-sm">Call<h6 className="font-semibold">078102030</h6></span>
                     </div>
                     <div>
