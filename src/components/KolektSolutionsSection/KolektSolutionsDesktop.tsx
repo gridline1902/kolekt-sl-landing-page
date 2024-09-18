@@ -55,7 +55,7 @@ function FeaturesDesktop({ features }: Readonly<{ features: Features[] }>) {
                         <div className="relative z-10 p-8">
                             <feature.icon className="h-8 w-8" />
                             <h3 className="mt-6 text-lg font-semibold uppercase">
-                                <Tab className="text-left outline-none"> {/* Removed focus styles */}
+                                <Tab className="text-left outline-none">
                                     <span className="absolute inset-0 rounded-2xl" />
                                     {feature.name}
                                 </Tab>
@@ -66,6 +66,7 @@ function FeaturesDesktop({ features }: Readonly<{ features: Features[] }>) {
                 ))}
             </TabList>
             <div className="relative col-span-6">
+               
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                     {/* <CircleBackground color="#13B5C8" className="animate-spin-slower" /> */}
                 </div>

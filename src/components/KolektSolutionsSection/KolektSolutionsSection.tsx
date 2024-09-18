@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 import KolektImage from "@/images/Kolekt-v3.0.png";
 import AfricellLogo from "@/images/Afrimoney-3.png"
+import FeaturesMobile from "./KolektSolutionsMobile";
 
 const features = [
     {
@@ -76,7 +77,15 @@ const KolektSolutionsSection = () => {
 
     return (
         <section className="min-h-screen bg-white py-12">
-            <div className="container">
+            <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
+                <h2 className="text-3xl font-medium tracking-tight text-center text-black">
+                    What you can do with Kolekt
+                </h2>
+            </div>
+            <div className="mt-16 md:hidden container">
+                <FeaturesMobile features={features} />
+            </div>
+            <div className="hidden md:block container md:mt-20">
                 <FeaturesDesktop features={features} />
             </div>
         </section>
