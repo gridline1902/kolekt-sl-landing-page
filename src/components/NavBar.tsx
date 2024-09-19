@@ -58,7 +58,7 @@ const NavBar = () => {
             {/* Desktop View */}
             <div className="hidden lg:flex lg:items-center lg:justify-between lg:w-full lg:max-w-6xl lg:px-4">
                 <Image
-                    src={'/Kolekt-v3.0.png'}
+                    src={KolektLogo}
                     alt="kolekt-logo"
                     width={100}
                     height={100}

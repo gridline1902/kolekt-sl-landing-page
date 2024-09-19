@@ -1,11 +1,7 @@
 "use client";
 
-import { useGSAP } from "@gsap/react";
 import Image from "next/image";
-import gsap from "gsap";
-import { useRef } from "react";
 import Marquee from "react-fast-marquee";
-
 
 import OrangeImg from '@/images/Orange-2.png';
 import AfrimoneyImg from '@/images/Afrimoney-3.png';
@@ -18,103 +14,39 @@ const imagePaths = [
     { src: AfrimoneyImg, alt: 'Afrimoney' },
     { src: EcobankImg, alt: 'Ecobank' },
     { src: GTBankImg, alt: 'GTBank' },
-    { src: QMoneyImg, alt: 'QMoney' }
+    { src: QMoneyImg, alt: 'QMoney' },
+    { src: OrangeImg, alt: 'Orange' },
+    { src: AfrimoneyImg, alt: 'Afrimoney' },
+    { src: EcobankImg, alt: 'Ecobank' },
+    { src: GTBankImg, alt: 'GTBank' },
+    { src: OrangeImg, alt: 'Orange' },
+    { src: QMoneyImg, alt: 'QMoney' },
 ];
 
 const PartnersSection = () => {
-
-    const containerRef = useRef(null);
-    const svgRef = useRef<SVGSVGElement>(null);
-
-
-    function animateRect(rect: gsap.TweenTarget) {
-        let tl = gsap.timeline({
-            repeat: -1,
-            defaults: { ease: "power1.inOut", duration: 1.5 }
-        });
-        tl.to(rect, { stroke: "#FF8C00" })
-            .to(rect, { stroke: "#FF0000" })
-            .to(rect, { stroke: "#0000FF" });
-
-        return tl;
-    }
-
-    useGSAP(() => {
-        const tl = gsap.timeline();
-        tl.add(animateRect("#rect1"));
-        tl.play();
-
-        gsap.set("rect", { fill: "none" });
-
-    }, { scope: containerRef });
-
     return (
-        <section className="pt-8 pb-12">
-            <div className="flex flex-col gap-12">
+        <section className="py-8">
+            <div className="container mx-auto flex flex-col items-center gap-8">
                 <h2 className="font-bold text-center">Trusted by These Partners</h2>
-                <Marquee
-                    gradient={false}
-                    speed={40}
-                    pauseOnHover={true}
-                >
-                    {imagePaths.map((image, index) => (
-                        <div key={index} className="px-48">
-                            <Image
-                                src={image.src}
-                                alt={image.alt}
-                                width={120}
-                                height={120}
-                                className="object-contain"
-                            />
-                        </div>
-                    ))}
-                </Marquee>
+                <div className="w-full max-w-5xl">
+                    <Marquee gradient={false} speed={40} pauseOnHover={true} className="overflow-hidden">
+                        {imagePaths.map((image, index) => (
+                            <div key={index} className="flex justify-center mx-4">
+                                <Image
+                                    src={image.src}
+                                    alt={image.alt}
+                                    width={150}
+                                    height={200}
+                                    className="object-cover"
+                                />
+                            </div>
+                        ))}
+                    </Marquee>
+                </div>
+                <hr className="w-3/4" />
             </div>
         </section>
-    )
+    );
 }
 
 export default PartnersSection;
-
-
-{/* <section ref={containerRef} className="bg-white">
-    <div className="flex flex-col gap-10 pt-12 sm: items-center lg:gap-12">
-        <h6 className="text-sm text-center font-medium">Trusted by these partners:</h6>
-        <div className="flex flex-col justify-center gap-4 lg:flex-row lg:gap-24 ">
-            {imagePaths.map((path, index) => (
-                <div key={path} className="relative w-[120px] h-[72px]">
-                    <svg
-                        ref={svgRef}
-                        viewBox="0 0 120 72"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="absolute inset-0 w-full h-full"
-                    >
-                        <rect
-                            x="0"
-                            y="0"
-                            width="120"
-                            height="72"
-                            style={{
-                                fill: 'transparent',
-                                stroke: 'rgb(0, 0, 0)',
-                                strokeWidth: '2px'
-                            }}
-                            id="rect1"
-                        />
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center p-2">
-                        <div className="relative w-full h-full">
-                            <Image
-                                src={path}
-                                alt={`Partner ${index + 1}`}
-                                layout="fill"
-                                className="object-cover"
-                            />
-                        </div>
-                    </div >
-                </div >
-            ))}
-        </div >
-        <hr className="mx-auto w-3/4" />
-    </div >
-</section >  */}

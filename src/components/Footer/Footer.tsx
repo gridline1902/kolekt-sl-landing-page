@@ -28,11 +28,11 @@ const Footer = () => {
                         <span className="flex gap-1 text-white text-sm">Call<h6 className="font-semibold">078102030</h6></span>
                     </div>
                     <div>
-                        <h6 className="text-white text-sm font-medium py-4">© 2024 Monime Limited. All Rights Reserved.</h6>
-                        <h6 className="text-white text-xs whitespace-pre-line leading-5 pb-2">
-                            Kolekt is powered by Monime Limited, a company registered in Sierra Leone with registered company number SL140722MONIM14909 and its registered office at 5 Hillside Bypass Road, Freetown, Sierra Leone.{"\n"}
-                            Monime Limited is authorised by the Bank of Sierra Leone under the Sandbox program for the provision of payment services.{"\n"}
-                            All trademarks and brand names belong to their respective owners.{"\n"}
+                        <h6 className="text-white text-xs font-medium py-4">© 2024 Monime Limited. All Rights Reserved.</h6>
+                        <h6 className="text-white text-[9px] leading-4 md:text-xs">
+                            Kolekt is powered by Monime Limited, a company registered in Sierra Leone with registered company number SL140722MONIM14909 and its registered office at 5 Hillside Bypass Road, Freetown, Sierra Leone.
+                            Monime Limited is authorised by the Bank of Sierra Leone under the Sandbox program for the provision of payment services.
+                            All trademarks and brand names belong to their respective owners.
                             Use of these trademarks and brand names do not represent endorsement by or association with our payment services.
                         </h6>
                     </div>
