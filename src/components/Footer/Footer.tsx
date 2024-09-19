@@ -5,8 +5,8 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 
 const Footer = () => {
     return (
-        <section className="min-h-screen bg-[#0181ff] flex flex-col">
-            <div className="flex flex-col gap-4 py-24 px-4 lg: items-center">
+        <section className="min-h-fit bg-[#0b1e3e] flex flex-col pb-12">
+            {/* <div className="flex flex-col gap-4 py-24 px-4 lg: items-center">
                 <h1 className="text-xl lg:text-4xl text-white font-semibold">Begin Kolekt Tidae</h1>
                 <h6 className="text-sm text-center text-white font-medium leading-6">Keep customers coming back with magical in-person payment experiences</h6>
                 <button className="bg-white leading-[2.2rem] px-4 rounded-md text-sm font-medium group flex items-center transition-all duration-300 ease-in-out">
@@ -17,8 +17,8 @@ const Footer = () => {
                         </div>
                     </span>
                 </button>
-            </div>
-            <div className="flex-grow bg-[#0b1e3e] flex flex-col justify-center items-start px-4">
+            </div> */}
+            <div className="flex-grow flex flex-col justify-center items-start px-4">
                 <div className="w-full max-w-6xl mx-auto flex flex-col">
                     <div className="mt-10">
                         <hr className="w-full border-t border-white" />
