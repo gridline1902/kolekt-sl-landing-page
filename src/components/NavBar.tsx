@@ -4,54 +4,75 @@ import Link from "next/link";
 import Button from "./Button";
 import { GiHeadphones } from "react-icons/gi";
 import { MdClose, MdMenu } from "react-icons/md";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import KolektLogo from "@/images/Kolekt-v3.0.png"
+import KolektLogo from "@/images/Kolekt-v3.0.png";
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const router = useRouter()
+    const router = useRouter();
 
-    const menuRefContainer = useRef(null)
-    const menuButtonRef = useRef<HTMLButtonElement>(null)
-    const menuIconRef = useRef<HTMLSpanElement>(null)
+    const menuRefContainer = useRef(null);
+    const menuButtonRef = useRef<HTMLButtonElement>(null);
+    const menuIconRef = useRef<HTMLSpanElement>(null);
+    const popoverRef = useRef<HTMLDivElement>(null);
 
     const { contextSafe } = useGSAP({ scope: menuRefContainer });
 
+    useEffect(() => {
+        if (isOpen) {
+            // Animate popover on open
+            gsap.fromTo(
+                popoverRef.current,
+                { opacity: 0, y: 20, scale: 0.8 }, // Starting state
+                { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power2.out" } // Final state
+            );
+        }
+    }, [isOpen]);
+
     const toggleMenu = contextSafe(() => {
-        const timeline = gsap.timeline()
+        const timeline = gsap.timeline();
         if (!isOpen) {
             timeline
                 .to(menuButtonRef.current, {
                     rotation: 180,
                     duration: 0.3,
-                    ease: "power2.out"
+                    ease: "power2.out",
                 })
                 .to(menuIconRef.current, {
                     rotate: 360,
                     scale: 1.2,
                     duration: 0.3,
-                    ease: "back.out(1.7)"
-                }, "<")
+                    ease: "back.out(1.7)",
+                }, "<");
         } else {
-            timeline.to(menuButtonRef.current, {
-                rotation: 0,
-                duration: 0.3,
-                ease: "power2.in"
-            })
+            timeline
+                .to(menuButtonRef.current, {
+                    rotation: 0,
+                    duration: 0.3,
+                    ease: "power2.in",
+                })
                 .to(menuIconRef.current, {
                     rotate: 0,
                     scale: 1,
                     duration: 0.3,
-                    ease: "back.in(1.7)"
+                    ease: "back.in(1.7)",
                 }, "<")
+                .to(popoverRef.current, {
+                    opacity: 0,
+                    y: 20,
+                    scale: 0.8,
+                    duration: 0.3,
+                    ease: "power2.in",
+                    onComplete: () => setIsOpen(false), 
+                });
         }
-        setIsOpen(!isOpen)
-    })
 
+        if (!isOpen) setIsOpen(true);
+    });
 
     return (
         <nav className="z-20 top-0 start-0 w-full h-20 bg-white flex items-center justify-center lg:sticky lg:h-16">
@@ -71,7 +92,9 @@ const NavBar = () => {
                             <h6 className="text-sm">Contact</h6>
                         </span>
                     </Link>
-                    <Button onClick={() => router.push('https://kolekt.monime.app')} className="h-8 px-4">Create a free account</Button>
+                    <Button onClick={() => router.push("https://kolekt.monime.app")} className="h-8 px-4">
+                        Create a free account
+                    </Button>
                 </div>
             </div>
 
@@ -97,16 +120,26 @@ const NavBar = () => {
                 </Button>
                 {/* Mobile Menu Popover */}
                 {isOpen && (
-                    <div className="absolute bottom-full right-0 mb-6 rounded-lg">
+                    <div
+                        ref={popoverRef}
+                        className="absolute bottom-full right-0 mb-6 rounded-lg"
+                    >
                         <div className="flex flex-col gap-2">
-                            <Link href="/contact" onClick={toggleMenu} className="absolute bg-blue-600 rounded-full right-0 bottom-14 py-2 px-4 text-white flex items-center gap-2">
+                            <Link
+                                href="/contact"
+                                onClick={toggleMenu}
+                                className="absolute bg-blue-600 rounded-full right-0 bottom-14 py-2 px-4 text-white flex items-center gap-2"
+                            >
                                 <GiHeadphones className="text-white" />
                                 <span>Contact</span>
                             </Link>
-                            <Button onClick={() => {
-                                router.push('https://kolekt.monime.app')
-                                toggleMenu()
-                            }} className="flex items-center gap-2 w-full bg-slate-900 text-white py-2 px-4 rounded-full hover:bg-muted">
+                            <Button
+                                onClick={() => {
+                                    router.push("https://kolekt.monime.app");
+                                    toggleMenu();
+                                }}
+                                className="flex items-center gap-2 w-full bg-slate-900 text-white py-2 px-4 rounded-full hover:bg-muted"
+                            >
                                 <span className="text-nowrap">Create a free account</span>
                             </Button>
                         </div>
@@ -115,6 +148,6 @@ const NavBar = () => {
             </div>
         </nav>
     );
-}
+};
 
 export default NavBar;

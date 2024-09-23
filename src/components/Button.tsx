@@ -1,6 +1,6 @@
 'use client'
 
-import { MutableRefObject, RefObject } from 'react'
+import { RefObject } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
