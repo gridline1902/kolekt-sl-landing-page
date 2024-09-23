@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import KolektAppScreen from "@/images/Kolekt-Home-v2-2.png"
+import { PhoneFrame } from "./PhoneFrame";
 
 
 gsap.registerPlugin(useGSAP);
@@ -55,7 +56,7 @@ const HeroSection = () => {
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className="h-fit bg-[#072048] overflow-hidden relative md:min-h-screen">
+        <section ref={containerRef} className="min-h-screen bg-[#072048] overflow-hidden relative md:min-h-screen">
             <div className="flex flex-col pt-12 lg:grid lg:grid-cols-2 relative z-10 min-h-screen lg:items-center lg:justify-center">
                 <div className="flex flex-col gap-10 items-center justify-center lg:items-end lg:justify-center text-center lg:text-left">
                     <div className="flex flex-col gap-8">
@@ -80,15 +81,18 @@ const HeroSection = () => {
                         </div>
                     </div>
                 </div>
-                <div ref={imageRef} className="relative scale-75 h-full lg:absolute lg:right-40 lg:scale-75 md:items-center">
-                    <Image
-                        className="md:mt-[59px]"
-                        src={KolektAppScreen}
-                        alt="kolekt-payments"
-                        width={500}
-                        height={400}
-                    />
+                <div ref={imageRef} className="relative h-full lg:absolute lg:right-40 md:items-center">
+                    <PhoneFrame className="h-full mt-24">
+                        <Image
+                            className="photo-screen object-cover scale-100"
+                            src={KolektAppScreen}
+                            alt="kolekt-payments"
+                            fill
+                        />
+                    </PhoneFrame>
                 </div>
+                {/* <div ref={imageRef} className="relative scale-75 h-full lg:absolute lg:right-40 lg:scale-75 md:items-center">
+                </div> */}
             </div>
         </section>
     );

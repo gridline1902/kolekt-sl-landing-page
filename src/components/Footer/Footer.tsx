@@ -1,6 +1,5 @@
 import Image from "next/image";
 import KolektWhiteLogo from "@/images/Kolekt-white-v3.0.png";
-import { MdKeyboardArrowRight } from "react-icons/md";
 
 
 const Footer = () => {
