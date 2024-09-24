@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import KolektAppScreen from "@/images/Kolekt-Home-v2-2.png";
+import KolektAppScreen from "@/images/Kolekt-Payments.png";
 import { PhoneFrame } from "./PhoneFrame";
 import { useRouter } from "next/navigation";
 
@@ -53,11 +53,15 @@ const HeroSection = () => {
             <div className="flex flex-col pt-12 lg:grid lg:grid-cols-2 relative z-10 min-h-screen lg:items-center lg:justify-center">
                 <div className="flex flex-col gap-10 items-center justify-center lg:items-end lg:justify-center text-center lg:text-left">
                     <div className="flex flex-col gap-8">
-                        <h1 ref={h1Ref} className="text-slate-50 text-[3.3rem] leading-[1.2] tracking-wide font-extrabold max-w-sm overflow-hidden lg:text-6xl text-center lg:text-left md:text-right">
-                            <div>
-                                <div>{`Get paid, \n quickly`}</div>
-                            </div>
-                        </h1>
+                        <div ref={h1Ref} className="flex flex-col">
+                            <h1 className="text-slate-50 text-[3rem] leading-[1.2] tracking-wide font-extrabold overflow-hidden lg:text-6xl text-center lg:text-left md:text-right lg:pb-2">
+                                {`Receive Payments,`}
+                            </h1>
+                            <h1 className="text-slate-50 text-[3.3rem] leading-[1.2] tracking-wide font-extrabold overflow-hidden lg:text-6xl text-center lg:text-left md:text-right lg:pb-2">
+                                {`quickly.`}
+                            </h1>
+
+                        </div>
                         <h6 ref={h6Ref} className="text-slate-50 max-w-lg overflow-hidden text-wrap lg:text-2xl">
                             <div>
                                 <div>Receive, confirm, and instantly settle payments directly to your mobile wallet -</div>

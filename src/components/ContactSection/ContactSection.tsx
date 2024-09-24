@@ -98,24 +98,6 @@ const ContactSection = () => {
                 </Button>
               </form>
             </div>
-
-            <div className="bg-white shadow-lg rounded-2xl p-8">
-              <h4 className="text-xl font-semibold text-gray-900 mb-6">About KOLEKT</h4>
-              <div className="space-y-6">
-                <div>
-                  <h5 className="font-bold text-gray-900 mb-2">Who is Kolekt for?</h5>
-                  <p className="text-gray-700">Kolekt is built for small businesses to quickly set up and start collecting in-person payments that are instantly settled.</p>
-                </div>
-                <div>
-                  <h5 className="font-bold text-gray-900 mb-2">Who is Kolekt not for?</h5>
-                  <p className="text-gray-700">Kolekt is not intended for use by large businesses, enterprises, fintech, or e-commerce solution providers. For these types of users, please visit <a href="https://monime.io" className="text-blue-600 hover:underline">monime.io</a>.</p>
-                </div>
-                <div>
-                  <h5 className="font-bold text-gray-900 mb-2">New here?</h5>
-                  <p className="text-gray-700">Begin by setting up a free account or reach out to us at <a href="tel:078102030" className="text-blue-600 hover:underline">078102030</a> or <a href="mailto:info@monime.io" className="text-blue-600 hover:underline">info@monime.io</a>.</p>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div className="space-y-4 mt-12 lg:mt-0">

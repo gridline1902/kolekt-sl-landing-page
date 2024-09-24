@@ -9,8 +9,8 @@ import AfricellLogo from "@/images/Afrimoney-3.png";
 const KolektSolutionsSection = () => {
     const features = [
         {
-            name: "Expand our business",
-            description: "Integrate once and let your customers pay you however they want.",
+            name: "Receive all payments",
+            description: "Let your customers pay you however they want.",
             icon: FaGlobeAfrica,
             screen: BusinessWoman
         },
