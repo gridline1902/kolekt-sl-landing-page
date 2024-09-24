@@ -67,7 +67,7 @@ const NavBar = () => {
                     scale: 0.8,
                     duration: 0.3,
                     ease: "power2.in",
-                    onComplete: () => setIsOpen(false), 
+                    onComplete: () => setIsOpen(false),
                 });
         }
 
@@ -78,15 +78,17 @@ const NavBar = () => {
         <nav className="z-20 top-0 start-0 w-full h-20 bg-white flex items-center justify-center lg:sticky lg:h-16">
             {/* Desktop View */}
             <div className="hidden lg:flex lg:items-center lg:justify-between lg:w-full lg:max-w-6xl lg:px-4">
-                <Image
-                    src={KolektLogo}
-                    alt="kolekt-logo"
-                    width={100}
-                    height={100}
-                    className="w-auto h-auto"
-                />
+                <Link href="/">
+                    <Image
+                        src={KolektLogo}
+                        alt="kolekt-logo"
+                        width={100}
+                        height={100}
+                        className="w-auto h-auto"
+                    />
+                </Link>
                 <div className="flex items-center gap-x-6">
-                    <Link href="/contact">
+                    <Link href="#contact">
                         <span className="flex items-center gap-1">
                             <GiHeadphones className="text-base text-gray-400" />
                             <h6 className="text-sm">Contact</h6>
@@ -126,7 +128,7 @@ const NavBar = () => {
                     >
                         <div className="flex flex-col gap-2">
                             <Link
-                                href="/contact"
+                                href="#contact"
                                 onClick={toggleMenu}
                                 className="absolute bg-blue-600 rounded-full right-0 bottom-14 py-2 px-4 text-white flex items-center gap-2"
                             >

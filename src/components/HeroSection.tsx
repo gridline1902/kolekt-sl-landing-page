@@ -78,7 +78,7 @@ const HeroSection = () => {
                         </div>
                     </div>
                 </div>
-                <div ref={imageRef} className="relative h-[80vh] lg:h-full mt-24 lg:absolute lg:right-40 md:items-center flex justify-center lg:justify-end lg:items-start">
+                <div ref={imageRef} className="relative h-[80vh] lg:h-full lg:absolute lg:right-40 md:items-center flex justify-center lg:justify-end lg:items-start lg:mt-60 sm: mt-12 sm: mb-4">
                     <PhoneFrame className="h-full">
                         <Image
                             className="photo-screen object-cover scale-100"
