@@ -24,7 +24,14 @@ const Footer = () => {
                     </div>
                     <div className="flex justify-between items-center w-full mt-12 mb-12">
                         <Image src={KolektWhiteLogo} alt="kolekt-logo" width={150} height={150} />
-                        <span className="flex gap-1 text-white text-sm">Call<h6 className="font-semibold">078102030</h6></span>
+                        <div className="flex flex-col">
+                            <a href="tel:+23278102030" className="flex gap-1 text-white text-xs lg:text-sm">
+                                Call: <h6 className="font-semibold">078102030</h6>
+                            </a>
+                            <a href="mailto:info@monime.io" className="flex gap-1 text-white text-xs lg:text-sm">
+                                Email: <h6 className="font-semibold">info@monime.io</h6>
+                            </a>
+                        </div>
                     </div>
                     <div>
                         <h6 className="text-white text-xs font-medium py-4">© 2024 Monime Limited. All Rights Reserved.</h6>
